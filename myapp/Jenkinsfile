@@ -28,6 +28,9 @@ pipeline {
         }
         }
         stage('Push to Docker Hub') {
+            agent {
+               label 'slave1'
+             }
             steps {
                 withDockerRegistry([credentialsId: 'docker-hub-credentials', url: 'https://index.docker.io/v1/']) {
                 sh '''
