@@ -15,7 +15,8 @@ pipeline {
         }
         stage('Build App') {
             steps {
-                cd myapp
+                echo $PWD
+                cd /home/ubuntu/k8s/workspace/k8s/myapp
                 sh 'mvn clean package'
             }
         }
