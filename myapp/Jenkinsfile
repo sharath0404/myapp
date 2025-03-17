@@ -16,8 +16,7 @@ pipeline {
         stage('Build App') {
             steps {
                 echo "$PWD"
-                sh "cd ${workspace}/myapp && ls -l"
-                sh 'mvn clean package'
+                sh "cd ${workspace}/myapp && mvn clean package"
             }
         }
         stage('Build Docker Image') {
