@@ -40,7 +40,7 @@ pipeline {
 
         stage('Deploy to Kubernetes') {
             steps {
-                sh 'kubectl apply -f k8s/deployment.yaml'
+                sh "cd ${workspace}/myapp && kubectl apply -f k8s/deployment.yaml"
             }
         }
         stage('Test Database Connection') {
