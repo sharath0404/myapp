@@ -1,14 +1,14 @@
 pipeline {
     agent any
     environment {
-        DB_HOST = "your-ec2-public-ip"
-        DB_USER = "myuser"
-        DB_PASS = "mypassword"
+        DB_HOST = "13.233.91.52"
+        DB_USER = "sharath"
+        DB_PASS = "sharath"
     }
     stages {
         stage('Clone Repo') {
             steps {
-                git 'https://github.com/your-repo/myapp.git'
+                git 'https://github.com/sharath0404/myapp.git'
             }
         }
         stage('Build App') {
@@ -18,13 +18,13 @@ pipeline {
         }
         stage('Build Docker Image') {
             steps {
-                sh 'docker build -t mydockerhubuser/myapp:latest .'
+                sh 'docker build -t sharath441993/k8s:latest .'
             }
         }
         stage('Push to Docker Hub') {
             steps {
                 withDockerRegistry([credentialsId: 'docker-hub-credentials', url: '']) {
-                    sh 'docker push mydockerhubuser/myapp:latest'
+                    sh 'docker push sharath441993/k8s:latest'
                 }
             }
         }

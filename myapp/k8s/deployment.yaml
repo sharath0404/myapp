@@ -14,14 +14,14 @@ spec:
     spec:
       containers:
         - name: myapp
-          image: mydockerhubuser/myapp:latest
+          image: sharath441993/k8s:latest
           env:
             - name: DB_HOST
-              value: "your-ec2-public-ip"
+              value: "13.233.91.52"
             - name: DB_USER
-              value: "myuser"
+              value: "sharath"
             - name: DB_PASS
-              value: "mypassword"
+              value: "sharath"
           ports:
             - containerPort: 8080
 ---
