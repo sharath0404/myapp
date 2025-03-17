@@ -24,7 +24,8 @@ pipeline {
                label 'slave1'
              }
             steps {
-                sh ' cd ${workspace}/myapp docker build -t sharath441993/k8s:latest .'        }
+                sh "cd ${workspace}/myapp docker build -t sharath441993/k8s:latest ."
+        }
         }
         stage('Push to Docker Hub') {
             steps {
