@@ -13,6 +13,7 @@ pipeline {
                git branch: 'main', url: 'https://github.com/sharath0404/myapp.git'
             }
         }
+ /*
         stage('Build App') {
              agent {
                label 'slave1'
@@ -22,7 +23,7 @@ pipeline {
                 sh "cd ${workspace}/myapp && mvn clean package"
             }
         }
-        /*
+*/        /*
         stage('Build Docker Image') {
              agent {
                label 'slave1'
