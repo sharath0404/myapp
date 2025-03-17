@@ -1,0 +1,45 @@
+pipeline {
+    agent any
+    environment {
+        DB_HOST = "your-ec2-public-ip"
+        DB_USER = "myuser"
+        DB_PASS = "mypassword"
+    }
+    stages {
+        stage('Clone Repo') {
+            steps {
+                git 'https://github.com/your-repo/myapp.git'
+            }
+        }
+        stage('Build App') {
+            steps {
+                sh 'mvn clean package'
+            }
+        }
+        stage('Build Docker Image') {
+            steps {
+                sh 'docker build -t mydockerhubuser/myapp:latest .'
+            }
+        }
+        stage('Push to Docker Hub') {
+            steps {
+                withDockerRegistry([credentialsId: 'docker-hub-credentials', url: '']) {
+                    sh 'docker push mydockerhubuser/myapp:latest'
+                }
+            }
+        }
+        stage('Deploy to Kubernetes') {
+            steps {
+                sh 'kubectl apply -f k8s/deployment.yaml'
+            }
+        }
+        stage('Test Database Connection') {
+            steps {
+                sh '''
+                apt-get update && apt-get install -y mysql-client
+                mysql -h $DB_HOST -u$DB_USER -p$DB_PASS -e "SHOW DATABASES;"
+                '''
+            }
+        }
+    }
+}
