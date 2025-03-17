@@ -1,5 +1,7 @@
 pipeline {
-    agent slave2
+    agent {
+      label 'slave2'
+    }
     environment {
         DB_HOST = "13.233.91.52"
         DB_USER = "sharath"
