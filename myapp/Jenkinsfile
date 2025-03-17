@@ -22,6 +22,7 @@ pipeline {
                 sh "cd ${workspace}/myapp && mvn clean package"
             }
         }
+        /*
         stage('Build Docker Image') {
              agent {
                label 'slave1'
@@ -40,7 +41,7 @@ pipeline {
                             }
                     }         
         }
-
+*/
         stage('Deploy to Kubernetes') {
             steps {
                 sh "cd ${workspace}/myapp && kubectl apply -f k8s/deployment.yaml"
