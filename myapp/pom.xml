@@ -39,7 +39,7 @@
         </dependency>
     </dependencies>
     <properties>
-    <java.version>21</java.version>  <!-- Change to 21 if needed -->
+    <java.version>17</java.version>  <!-- Change to 21 if needed -->
       </properties>
     <build>
         <plugins>
