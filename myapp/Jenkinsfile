@@ -20,6 +20,9 @@ pipeline {
             }
         }
         stage('Build Docker Image') {
+             agent {
+               label 'slave1'
+             }
             steps {
                 sh 'docker build -t sharath441993/k8s:latest .'
             }
