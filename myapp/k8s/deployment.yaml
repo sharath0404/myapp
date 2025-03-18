@@ -17,7 +17,7 @@ spec:
           image: sharath441993/k8s:latest
           env:
             - name: DB_HOST
-              value: "13.233.91.52"
+              value: "13.201.128.155"
             - name: DB_USER
               value: "sharath"
             - name: DB_PASS
