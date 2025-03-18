@@ -26,7 +26,7 @@ pipeline {
 
         stage('Build Docker Image') {
              agent {
-               label 'slave1'
+               label 'slave2'
              }
             steps {
                 sh "cd ${workspace}/myapp && docker build -t sharath441993/k8s:latest ."
@@ -34,7 +34,7 @@ pipeline {
         }
         stage('Push to Docker Hub') {
             agent {
-               label 'slave1'
+               label 'slave2'
              }
                     steps {
                         withDockerRegistry([credentialsId: 'docker-hub-credentials', url: 'https://index.docker.io/v1/']) {
